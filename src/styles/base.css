@@ -1,0 +1,123 @@
+/*
+ * Scoped stand-in for Tailwind's preflight. The plugin renders inside SiYuan's
+ * page, so a global preflight would reset the host's UI too; every rule here is
+ * limited to the plugin subtree instead.
+ *
+ * This file is load-bearing, not boilerplate. Without it SiYuan's styles leak in:
+ * box-sizing stays content-box (so `w-full` + padding + border overflow),
+ * <button> keeps its 2px outset border and grey background, `border-*` utilities
+ * render nothing (Tailwind only sets border-width and needs `border-style: solid`),
+ * <input> keeps a white background, and lucide icons fill solid.
+ *
+ * Layer note: `@layer base` beats the host's *layered* styles but loses to its
+ * *unlayered* ones, which is why the svg and font overrides live outside the layer.
+ */
+@layer base {
+  .sy-calendar-root,
+  .sy-calendar-portal,
+  .sy-calendar-setting,
+  .sy-calendar-popup,
+  .sy-calendar-root *,
+  .sy-calendar-portal *,
+  .sy-calendar-setting *,
+  .sy-calendar-popup *,
+  .sy-calendar-root *::before,
+  .sy-calendar-portal *::before,
+  .sy-calendar-setting *::before,
+  .sy-calendar-popup *::before,
+  .sy-calendar-root *::after,
+  .sy-calendar-portal *::after,
+  .sy-calendar-setting *::after,
+  .sy-calendar-popup *::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--border);
+  }
+
+  .sy-calendar-root button,
+  .sy-calendar-portal button,
+  .sy-calendar-setting button,
+  .sy-calendar-popup button {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    background-image: none;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    cursor: pointer;
+  }
+
+  .sy-calendar-root input,
+  .sy-calendar-portal input,
+  .sy-calendar-setting input,
+  .sy-calendar-popup input {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+  }
+
+  .sy-calendar-root svg,
+  .sy-calendar-portal svg,
+  .sy-calendar-setting svg,
+  .sy-calendar-popup svg {
+    display: block;
+    vertical-align: middle;
+  }
+}
+
+/*
+ * Must stay outside @layer: SiYuan's unlayered `svg { fill: currentColor }` beats
+ * any layered rule and would turn stroke-based lucide icons into solid blocks.
+ */
+.sy-calendar-root svg,
+.sy-calendar-portal svg,
+.sy-calendar-setting svg,
+.sy-calendar-popup svg {
+  fill: none;
+}
+
+/*
+ * Also outside @layer, for the same reason: SiYuan ships an unlayered
+ * `button, input, select, textarea { font-size: 100% }` and
+ * `button, input { line-height: normal }`. `revert-layer` steps aside from this
+ * unlayered context so the utilities layer can win wherever a `text-*` class is
+ * present. Do not reintroduce the `font` shorthand here: it expands to font-size
+ * and silently defeats every `text-*` utility on controls.
+ */
+.sy-calendar-root button,
+.sy-calendar-portal button,
+.sy-calendar-setting button,
+.sy-calendar-popup button,
+.sy-calendar-root input,
+.sy-calendar-portal input,
+.sy-calendar-setting input,
+.sy-calendar-popup input {
+  font-size: revert-layer;
+  line-height: revert-layer;
+}
+
+/*
+ * `revert-layer` above also drops the host's `font-size: 100%`, so controls with
+ * no `text-*` class would fall back to the UA default (13.3333px) instead of the
+ * panel's 14px. Re-declare inheritance in the base layer, which utilities outrank.
+ */
+@layer base {
+  .sy-calendar-root button,
+  .sy-calendar-portal button,
+  .sy-calendar-setting button,
+  .sy-calendar-popup button,
+  .sy-calendar-root input,
+  .sy-calendar-portal input,
+  .sy-calendar-setting input,
+  .sy-calendar-popup input {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}

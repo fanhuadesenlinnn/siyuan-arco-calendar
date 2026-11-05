@@ -1,7 +1,171 @@
+# [2.4.0](https://github.com/svchord/siyuan-arco-calendar/compare/v2.3.1...v2.4.0) (2026-11-03)
+
+
+### Bug Fixes
+
+* **calendar:** draw the note marker as an element and switch it instantly ([34f57f5](https://github.com/svchord/siyuan-arco-calendar/commit/34f57f5b1772137135f13490c032fe252504a4e5))
+* **calendar:** keep the today dot circular and document the comment rule ([99a4ae1](https://github.com/svchord/siyuan-arco-calendar/commit/99a4ae1b90b3c78c12a7e6694d2121e517f2a3e8))
+* **layout:** even spacing between the day grid and the panel dividers ([12db555](https://github.com/svchord/siyuan-arco-calendar/commit/12db5557ed7361e85cd81a5ab880879fb71d428d))
+* **styles:** restore text-* utilities on plugin buttons and inputs ([ff5d26e](https://github.com/svchord/siyuan-arco-calendar/commit/ff5d26e765c07349062461659a99d38a7d440c6b))
+
+
+### Features
+
+* **i18n:** support all 22 SiYuan locales ([80cb39e](https://github.com/svchord/siyuan-arco-calendar/commit/80cb39e73f90b6e7187c36276360394a379afcaa))
+* **theme:** add a switch for using the host theme accent ([808d8d5](https://github.com/svchord/siyuan-arco-calendar/commit/808d8d53905854f7482c1afd97bde6828923d4ab))
+* **ui:** replace the hand-rolled view switch with vendored Vega Tabs ([762328c](https://github.com/svchord/siyuan-arco-calendar/commit/762328c371d6bd4a4c6b1725040c48a545ced5e4))
+
+## [2.3.1](https://github.com/svchord/siyuan-arco-calendar/compare/v2.3.0...v2.3.1) (2026-11-02)
+
+
+### Bug Fixes
+
+* sync topbar entry order on position change ([cb2b468](https://github.com/svchord/siyuan-arco-calendar/commit/cb2b4689e5626cea90e996696ab116800f1b9f99))
+
+
+### Performance Improvements
+
+* aggregate calendar activity queries by date ([e1936f1](https://github.com/svchord/siyuan-arco-calendar/commit/e1936f1f0a7c4d662a93a60ff5f8306e96dd58f2))
+
+# [2.3.0](https://github.com/svchord/siyuan-arco-calendar/compare/v2.2.3...v2.3.0) (2026-11-02)
+
+
+### Bug Fixes
+
+* restore desktop livereload over HTTPS ([892f439](https://github.com/svchord/siyuan-arco-calendar/commit/892f4392b7c16083b20e220b5188407b9427f0a3))
+
+
+### Features
+
+* improve yearly heatmap interactions ([312615b](https://github.com/svchord/siyuan-arco-calendar/commit/312615beee6fc2a4d2b49d3e0c069632628d2dc3))
+* polish calendar panel layout and day states ([0acb514](https://github.com/svchord/siyuan-arco-calendar/commit/0acb514ff158d1ae3ad90bcf01ca6319428d0c34))
+* refine calendar panel and top-bar icon ([c120e30](https://github.com/svchord/siyuan-arco-calendar/commit/c120e3041549eb8ff1d6427b32a875c51f1f9d84))
+
+## [2.2.3](https://github.com/svchord/siyuan-arco-calendar/compare/v2.2.2...v2.2.3) (2026-11-01)
+
+
+### Bug Fixes
+
+* **docs:** 更新发布流程说明为 semantic-release ([ba5a0f8](https://github.com/svchord/siyuan-arco-calendar/commit/ba5a0f88921accfed9451ba9b62ce625b6c00de6))
+
 # 版本日志 | Changelog 
 
 
-## [1.5.0](https://github.com/svchord/siyuan-arco-calendar/compare/v1.4.5...v1.5.0) (2024-04-12)
+## [2.2.2](https://github.com/svchord/siyuan-arco-calendar/compare/siyuan-arco-calendar-v2.2.1...siyuan-arco-calendar-v2.2.2) (2026-10-31)
+
+
+### Bug Fixes
+
+* reconcile path-only daily notes on refresh ([ece2e4b](https://github.com/svchord/siyuan-arco-calendar/commit/ece2e4b5f9060baafd9b5794517ad8957a3ccb67))
+* widen year and month selectors ([534fc5d](https://github.com/svchord/siyuan-arco-calendar/commit/534fc5dad48e90d376d799a2148018c9a00a8cbc))
+
+## [2.2.1](https://github.com/svchord/siyuan-arco-calendar/compare/siyuan-arco-calendar-v2.2.0...siyuan-arco-calendar-v2.2.1) (2026-10-31)
+
+
+### Bug Fixes
+
+* **release:** restore package asset upload ([ce4cf99](https://github.com/svchord/siyuan-arco-calendar/commit/ce4cf992af891499b4dd02e467396dadeccf90e2))
+
+## [2.2.0](https://github.com/svchord/siyuan-arco-calendar/compare/siyuan-arco-calendar-v2.1.0...siyuan-arco-calendar-v2.2.0) (2026-10-31)
+
+
+### Features
+
+* add yearly heatmap view and refine calendar controls ([77aee46](https://github.com/svchord/siyuan-arco-calendar/commit/77aee46fc8e3d150df191016762e39eec32f6261))
+
+## [2.1.0](https://github.com/svchord/siyuan-arco-calendar/compare/siyuan-arco-calendar-v2.0.0...siyuan-arco-calendar-v2.1.0) (2026-10-31)
+
+
+### Features
+
+* rebuild calendar plugin with React, Base UI and native daily-note API ([4962243](https://github.com/svchord/siyuan-arco-calendar/commit/4962243d62a605dacfd43afdc51bedde68d21051))
+* 使用websocket通信替代轮询 ([d0aba5a](https://github.com/svchord/siyuan-arco-calendar/commit/d0aba5a7753388dee37ba492bc7f7f1b64f87b9c))
+* 初步完善子组件功能 ([7501c2b](https://github.com/svchord/siyuan-arco-calendar/commit/7501c2b23cab818a7f38412d339944b5e77c367b))
+* 初步完善父组件状态数据 ([aa8d673](https://github.com/svchord/siyuan-arco-calendar/commit/aa8d67336f7306d5fa5e191a0772cd5c3c768d0c))
+* 增加两种配置 ([9ac23d4](https://github.com/svchord/siyuan-arco-calendar/commit/9ac23d4a07e025fbb5b292b73540f9619167cbbf))
+* 增加国际化功能 ([99bf14f](https://github.com/svchord/siyuan-arco-calendar/commit/99bf14f49ecf1a5157610ff3a0ebaf0fff7e86e2)), closes [#6](https://github.com/svchord/siyuan-arco-calendar/issues/6)
+* 增加配置按钮入口位置的功能 ([859a654](https://github.com/svchord/siyuan-arco-calendar/commit/859a65487c0a483aa472cde0f2575cd2ff1a2609))
+* 实现日记模板渲染 ([b79e2e6](https://github.com/svchord/siyuan-arco-calendar/commit/b79e2e68e2c31a61e4c6d315744ab421f948be93))
+* 记忆面板 ([2b947c9](https://github.com/svchord/siyuan-arco-calendar/commit/2b947c96f269703e5282b747135dacd24bdda9dd))
+* 适配插件系统 ([1f5bf31](https://github.com/svchord/siyuan-arco-calendar/commit/1f5bf3105a5ac8bf064f152dec578ffbbc9237b4))
+* 重写底部今天按钮 ([c1a8538](https://github.com/svchord/siyuan-arco-calendar/commit/c1a8538082917ab7bc27360ba5e2a3cf183e64ac))
+* 面板位置改为dock栏 ([84389b5](https://github.com/svchord/siyuan-arco-calendar/commit/84389b5812ad106e26b7db5cf8d8ccd0d3d3c430))
+
+
+### Bug Fixes
+
+* [#14](https://github.com/svchord/siyuan-arco-calendar/issues/14) 修复不兼容docker部署的思源的问题 ([11c6c8c](https://github.com/svchord/siyuan-arco-calendar/commit/11c6c8c133c7c3f17afbf709a5eae370b1e2d869))
+* #[#14](https://github.com/svchord/siyuan-arco-calendar/issues/14) 修复不兼容docker部署的思源的问题 ([86db221](https://github.com/svchord/siyuan-arco-calendar/commit/86db2218633bb18f0286a5f9ad538b6690b6edd9))
+* keep notebook dropdown above calendar panel ([13ac07c](https://github.com/svchord/siyuan-arco-calendar/commit/13ac07cf86161ee169adf666b888dbdcfbcfbe33))
+* restore calendar panel rendering on current SiYuan ([0bf380d](https://github.com/svchord/siyuan-arco-calendar/commit/0bf380dfa6b1ddc0a529b488f7a82f461208c9ac))
+* Style inject ([291b404](https://github.com/svchord/siyuan-arco-calendar/commit/291b4049c3453a40049b1f649b90582c1b1703f1))
+* Style inject ([a0f70d1](https://github.com/svchord/siyuan-arco-calendar/commit/a0f70d1204491ef54683383e1d6e364e8cbbbc95))
+* 优化图标 ([fc8556d](https://github.com/svchord/siyuan-arco-calendar/commit/fc8556d3c6580d78102b16646ba326a549881eec))
+* 优化日历 cell 样式 ([e897ad2](https://github.com/svchord/siyuan-arco-calendar/commit/e897ad2152fc80a472fff9d40ac8d17218fa866a))
+* 优化获取已存在日记的方法 ([be6c959](https://github.com/svchord/siyuan-arco-calendar/commit/be6c959e7ef3d0ba8825ac94be1304a869c38f68))
+* 优化颜色变量以及删除文档时的响应逻辑 ([0fd08f9](https://github.com/svchord/siyuan-arco-calendar/commit/0fd08f9efde5262d2bb94dd41429c4ef5fee2bdc))
+* 修复mac无法创建日记的问题 ([886c872](https://github.com/svchord/siyuan-arco-calendar/commit/886c872aa1d167d86be349d449a1e10fe5c95992))
+* 修复最后几个已存在日记日期无法正常显示的问题 ([ad0bf6f](https://github.com/svchord/siyuan-arco-calendar/commit/ad0bf6f92fc390f683601f377132818378e542c5))
+* 修复删除单篇日记的显示错误 ([ca3f516](https://github.com/svchord/siyuan-arco-calendar/commit/ca3f516be660dc2db3be31086d8032d56618e8a8))
+* 修复删除文档后不正确更新标记的问题 ([e375eff](https://github.com/svchord/siyuan-arco-calendar/commit/e375effff3a633df4cd47b1189944e5c5a2d5152))
+* 修复国际化文本 ([06ce7a0](https://github.com/svchord/siyuan-arco-calendar/commit/06ce7a05ac0f8927007fe6a8697308cb7570bfa0)), closes [#30](https://github.com/svchord/siyuan-arco-calendar/issues/30)
+* 修复已存在日记的日期错误清空的问题 ([8c2cbf4](https://github.com/svchord/siyuan-arco-calendar/commit/8c2cbf4ae71506c1b8ff3612480fcaf134be1a63))
+* 修复搜索限额的问题 ([2682b67](https://github.com/svchord/siyuan-arco-calendar/commit/2682b67941257551b1f4524fe39177a21a62af8f))
+* 修复数据库更新不及时的问题 ([ecfbb24](https://github.com/svchord/siyuan-arco-calendar/commit/ecfbb2410235bea620a20ee167d6fedd60939fe8))
+* 修复模板文件渲染顺序的问题 ([9953169](https://github.com/svchord/siyuan-arco-calendar/commit/9953169178e1b88cc89b4f17fa8533cf458ef88e))
+* 修复模板路径报错的问题 ([83974f0](https://github.com/svchord/siyuan-arco-calendar/commit/83974f072bbfb64cbe4be899870b46271858269f))
+* 修复点击创建后无法更新已存在日记的问题 ([53eaac3](https://github.com/svchord/siyuan-arco-calendar/commit/53eaac3424a4ce2e56e1d66c9ccd0fd27d48ad6e))
+* 修复点击高亮日期失效的问题 ([e57b1a7](https://github.com/svchord/siyuan-arco-calendar/commit/e57b1a7a045fe20ebb6d901544fd1d65dd67aeb5)), closes [#29](https://github.com/svchord/siyuan-arco-calendar/issues/29)
+* 修复版本号不自动更新的问题 ([dfab8ea](https://github.com/svchord/siyuan-arco-calendar/commit/dfab8ea94c6b069fa8053ee4678145a8427f15da))
+* 修复笔记本未及时更新的问题 ([aa081e5](https://github.com/svchord/siyuan-arco-calendar/commit/aa081e53f39d482bd277ccedf58d3c57fa557ec7))
+* 修复集市不能正常显示预览图的问题 ([30634cb](https://github.com/svchord/siyuan-arco-calendar/commit/30634cb2f2460a64c05b251415fe5036897d5ed9))
+* 兼容使用插件系统国际化 ([0077cc2](https://github.com/svchord/siyuan-arco-calendar/commit/0077cc203293ada780cad550d2aa58eca8205b4e))
+* 兼容思源css变量 ([868049a](https://github.com/svchord/siyuan-arco-calendar/commit/868049a28823d28b751ce07e54af1f5256a986aa))
+* 兼容思源v2.8.10新的api ([f0d1ebb](https://github.com/svchord/siyuan-arco-calendar/commit/f0d1ebba5757bfb48ed34b99f126d95824d98592))
+* 完善按钮选择器和卸载钩子 ([dc37be8](https://github.com/svchord/siyuan-arco-calendar/commit/dc37be8bd1f83bd546b9694a7ad2f09bdac064e4))
+* 快捷键创建日记和删除文档时更新当前月份面板 ([a9a9beb](https://github.com/svchord/siyuan-arco-calendar/commit/a9a9beb7bc76c0c9abb9aa7b26d1c72b90a68fa6))
+* 暂时修复样式污染问题 ([44c3d78](https://github.com/svchord/siyuan-arco-calendar/commit/44c3d782b87c8f05f0ef12fa230689814ff9f84d)), closes [#2](https://github.com/svchord/siyuan-arco-calendar/issues/2)
+* 更换plugin.json的位置 ([4869cd5](https://github.com/svchord/siyuan-arco-calendar/commit/4869cd58e284a297b09458756b8768c062d1ab8b))
+* 重构创建日记功能 ([c71c97f](https://github.com/svchord/siyuan-arco-calendar/commit/c71c97f31ba194f4cdb06f5514400907f3e06755))
+* 重构获取已存在日记的功能逻辑 ([af229d7](https://github.com/svchord/siyuan-arco-calendar/commit/af229d780bb23e971825b30a85289782f52124ce))
+
+
+### Performance Improvements
+
+* 优化请求逻辑和时期，提升展示性能 ([3c61b07](https://github.com/svchord/siyuan-arco-calendar/commit/3c61b0775501791de4d436eba52fb90d01ff2c05))
+* 优化面板选中更新时创建日记逻辑 ([1cf28ed](https://github.com/svchord/siyuan-arco-calendar/commit/1cf28ed3bb94f92c668d2275c245897eb44056eb))
+
+## [2.0.0](https://github.com/svchord/siyuan-arco-calendar/compare/v1.5.0...v2.0.0) (2026-10-30)
+
+### 重构 | Code Refactoring
+
+* 全面移除 Vue 与 Arco Design，使用 React 19 + shadcn/ui + Tailwind CSS 4 重写全部界面
+* 采用 shadcn/ui **Vega** 预设风格（中性色、Inter 字体、Vega 组件圆角与间距），不再沿用旧 Arco 视觉
+* 重新设计面板布局：Card + Separator + 图标标题栏 + 笔记本选择器 + 底部日期状态与“今天”主按钮
+* 重组插件架构：宿主上下文、类型化 API 层、hooks、纯函数工具与 shadcn 组件目录
+* 使用 `createRoot` / `root.unmount()` 管理顶栏弹层、Dock 与设置项，补全生命周期清理
+* 更新全部依赖至最新版本，迁移至 Vite 8、TypeScript 7、ESLint/oxlint 新工具链
+* 完善跨平台开发流程：`make-link` / `make-install` 全部使用 Node.js，不再依赖 PowerShell
+* 性能优化：Inter 字体仅保留 Latin/Latin-Ext 子集，locale 配置只请求一次并缓存
+* 修复日期 key 不一致导致的重复创建问题，并补充回归测试；新增插件专属顶栏图标与居中月份导航
+* 修复宿主全局 `svg { fill: currentColor }` 覆盖 lucide 图标的问题，面板内日历图标正常显示
+* 整理数据获取时序：缓存系统配置与语言、增加笔记本请求乱序保护、共享主题监听、减少重复请求
+* 整理项目结构：拆分纯日记工具文件、移除未使用的 Tabs 组件、补充数据流文档
+* 移除 commitizen / standard-version 等旧流程依赖，改用 release-please 与 GitHub Release workflow
+* 新增日历 / 年度热力图切换；热力图统计全部笔记内容块：日记按日记日期，其他笔记按内容块创建日期，按上下半年分两段展示
+* 刷新操作增加成功/失败提示，并正确传播笔记本与日记刷新结果
+* 顶部月份/年份改为下拉选择，月份切换按钮移除；刷新入口移到年份选择器右侧
+* 创建日记改用内核 `createDailyNote` API（支持任意 `date`），由内核处理父目录、模板、图标和属性，彻底移除手写嵌套创建逻辑
+* 设置入口移到日历面板右上角，支持每周起始日（周一/周日）和 ISO 周数显示，并重新整理设置项布局
+* 周数改用 shadcn 默认样式并修正垂直居中；底部增加带文字的刷新按钮
+* 已有日记改为柔和圆底标记，空缺日期保持空白；未完成任务显示琥珀色角标并可在设置中关闭
+* 顶部和底部分隔线统一为同一个 `PanelDivider` 组件
+* 修复日记父目录重复创建问题：不再手动创建父路径，改由内核每日笔记 API 幂等处理
+* `components/ui` 恢复为 shadcn `base-vega` 分发版本，插件特有行为移至业务组件与原语组合
+* 同步现代思源插件清单：BCP 47 语言文件、`displayName.default`、`minAppVersion` 3.8.5
+* 修复日记模板属性写入未等待、SQL 字符串转义、跨月日历标记等问题
+
+### [1.5.0](https://github.com/svchord/siyuan-arco-calendar/compare/v1.4.5...v1.5.0) (2024-04-12)
 
 
 ### 新增功能 | Features

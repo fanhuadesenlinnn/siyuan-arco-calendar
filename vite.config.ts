@@ -1,9 +1,7 @@
-import { fileURLToPath, URL } from 'node:url';
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import AutoImport from 'unplugin-auto-import/vite';
-import Components from 'unplugin-vue-components/vite';
-import { ArcoResolver } from 'unplugin-vue-components/resolvers';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 import minimist from 'minimist';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
@@ -21,69 +19,46 @@ console.log('distDir=>', distDir);
 
 export default defineConfig({
   plugins: [
-    vue(),
-    AutoImport({
-      resolvers: [ArcoResolver()],
-      imports: ['vue'],
-    }),
-    Components({
-      resolvers: [
-        ArcoResolver({
-          sideEffect: false,
-        }),
-      ],
-    }),
+    react(),
+    tailwindcss(),
     viteStaticCopy({
-      targets: [
-        { src: 'README*.md', dest: './' },
-        { src: 'plugin.json', dest: './' },
-        { src: 'icon.png', dest: './' },
-        { src: 'preview.png', dest: './' },
-      ],
+      targets: [{ src: 'README*.md', dest: './' }],
     }),
   ],
   resolve: {
-    alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
+    alias: { '@': resolve(import.meta.dirname, 'src') },
   },
 
-  // https://github.com/vitejs/vite/issues/1930
-  // https://vitejs.dev/guide/env-and-mode.html#env-files
-  // https://github.com/vitejs/vite/discussions/3058#discussioncomment-2115319
-  // 在这里自定义变量
   define: {
-    'process.env.NODE_ENV': isWatch ? `"development"` : `"production"`,
-    'process.env.DEV_MODE': `"${isWatch}"`,
+    'process.env.NODE_ENV': JSON.stringify(isWatch ? 'development' : 'production'),
+    'process.env.DEV_MODE': JSON.stringify(`${isWatch}`),
   },
 
   build: {
-    // 输出路径
     outDir: distDir,
     emptyOutDir: false,
-
-    // 构建后是否生成 source map 文件
     sourcemap: false,
-
-    // 设置为 false 可以禁用最小化混淆
-    // 或是用来指定是应用哪种混淆器
-    // boolean | 'terser' | 'esbuild'
-    // 不压缩，用于调试
     minify: !isWatch,
-
+    target: 'es2022',
     lib: {
-      entry: 'src/index.ts',
-      // the proper extensions will be added
+      entry: resolve(import.meta.dirname, 'src/index.tsx'),
       fileName: 'index',
+      cssFileName: 'index',
       formats: ['cjs'],
     },
     rollupOptions: {
       plugins: isWatch
         ? [
-            livereload(devDistDir),
+            livereload({
+              watch: devDistDir,
+              // Keep the default port (35729); only make the client URL explicit
+              // because SiYuan's desktop window is HTTPS while livereload is HTTP.
+              clientUrl: 'http://127.0.0.1:35729/livereload.js?snipver=1',
+            }),
             {
-              //监听静态资源文件
               name: 'watch-external',
               async buildStart() {
-                const files = await fg(['public/**', 'README*.md', 'plugin.json', 'icon.png', 'preview.png']);
+                const files = await fg(['public/**', 'README*.md']);
                 for (const file of files) {
                   this.addWatchFile(file);
                 }
@@ -91,16 +66,14 @@ export default defineConfig({
             },
           ]
         : [zipPack({ inDir: './dist', outDir: './', outFileName: 'package.zip' })],
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
       external: ['siyuan', 'process'],
       output: {
         entryFileNames: '[name].js',
-        assetFileNames: chunkInfo => {
-          if (chunkInfo.name?.endsWith('.css')) {
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.endsWith('.css')) {
             return 'index.css';
           }
-          return chunkInfo.name as string;
+          return assetInfo.name ?? 'asset';
         },
       },
     },
