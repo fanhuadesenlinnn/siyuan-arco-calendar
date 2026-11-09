@@ -17,14 +17,16 @@
 
 ## UI inspection
 
-- Answer rendered-style questions with `pnpm inspect`, never with a new script. It covers computed styles, matched rules (`--rules`), pixels (`--pixels`), screenshots (`--shot`), CSS injection (`--css`), and UI state (`--do`, `--viewport`).
-- Extend a layer rather than adding a script: `session.mjs` owns the browser and `--do` actions, `probes.mjs` owns measurements, `inspect.mjs` is the CLI. New scenarios should be expressible from the command line.
-- A throwaway probe is the last resort, not the default. If one is unavoidable, write it parameterised and reuse it.
+- Answer rendered-style questions with `siyuan-devtools` (`read env` / `read tokens` / `read element` / `read contrast`) or `pnpm shot` (headless desktop/mobile screenshots), never with a new script.
+- `siyuan-devtools` keeps one resident browser session. Run `pnpm open` once; every later command reuses the same page. Do not `open` again — it kills the old Chrome.
+- Interaction and layout states need real events: `do hover ...`, `do menu ...`. Elements such as menu items are absent from the DOM until opened. `siyuan-devtools --help` lists every command.
+- After editing sources, wait for `[vite-plugin-siyuan] build #N ready`, then `siyuan-devtools reload` before measuring.
+- A throwaway probe is the last resort, not the default.
 
-## Dev watch / LiveReload
+## Dev watch
 
-- Run only one `pnpm dev` (`vite build --watch`) per checkout. It writes `dev/` and serves LiveReload on `35729`.
-- Never run `pnpm run build` while watching: its `scripts/clean.js` step deletes `dev/`, `dist/` and `package.zip`. Stop the watcher first; for a dist-only build use `pnpm exec vite build`.
-- Keep `dev/` and `dist/` out of commits; they are generated.
-- SiYuan desktop serves its window over HTTPS. The injected LiveReload URL must be explicit `http://127.0.0.1:35729/livereload.js?snipver=1`; a protocol-relative `//...` URL silently fails.
-- If auto-reload stops, ensure one watcher owns `35729`, then reload the SiYuan page once. Do not start another watcher.
+- Run only one `pnpm dev` (`vite build --watch`) per checkout; it writes `dev/`.
+- The `vite-plugin-siyuan` Vite plugin links `dev/` into the SiYuan plugin directory when the session starts. A plugin directory must be a real symlink — SiYuan's Go runtime does not accept a junction — so on Windows the plugin requests UAC once when the privilege is missing; refusing it aborts the session rather than falling back to a copy.
+- Any artifact change makes the plugin broadcast `/api/ui/reloadUI` (full-page refresh): SiYuan re-runs startup, so both `index.js` and `index.css` pick up the new files. Your own SiYuan window refreshes too (loses cursor/scroll/open panels) — this is an explicit tradeoff.
+- Stop the watcher before `pnpm run build`: both builds run `tsc --build --force` over the same `node_modules/.tmp/*.tsbuildinfo`, so running them at once races on that state.
+- `dev/` and `dist/` are generated; keep them out of commits.
